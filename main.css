@@ -20,11 +20,20 @@ body {
 }
 
 #header {
+	color: white;
+	font-family: Impact, sans;
+	font-size: 40;
+	text-align: center;
+	line-height: 5;
+	text-shadow: 0px 0px 6px black, 0px 0px 6px black, 0px 0px 6px black;
 	position: relative;
-	left: calc(50% - 1250px);
+	height: 200px;
+	background-image: url("pizza-1.jpg");
+	background-position:center;
+	background-size: cover;
 }
 
-#menu {
+#navmenu {
 	background-color: rgb(255, 255, 180);
 	clear: right;
 	list-style-type: none;
@@ -32,7 +41,7 @@ body {
 	font-family: sans-serif;
 }
 
-#menu a{
+#navmenu a{
 	color: black;
 	text-decoration: none;
 	background-color: rgb(255, 255, 180);
@@ -41,11 +50,11 @@ body {
 	transition: box-shadow .5s;
 }
 
-#menu > li:last-child > a{
+#navmenu > li:last-child > a{
 	border-radius: 0px 4px 4px 0px; 
 }
 
-#menu a:hover{
+#navmenu a:hover{
 	box-shadow: inset 0px -2px 2px 0px red;
 }
 
@@ -58,6 +67,31 @@ body {
 	width: 300px;
 	padding: 20px;
 	border-radius: 4px 0px 0px 4px;
+}
+
+#foodmenu {
+	background-color: rgb(255, 255, 180);
+	clear: left;
+	margin-left: 20px;
+	margin-top: 80px;
+}
+
+.foodname {
+	font-weight: bold;
+}
+
+.addtoorder{
+	border: 0;
+	color: white;
+	text-decoration: none;
+	background-color: red;
+	padding: 5px;
+	border-radius: 4px;
+	transition: box-shadow .5s;
+}
+
+.addtoorder:hover{
+	box-shadow: inset 0px -2px 2px 0px yellow;	
 }
 
 #footer {
