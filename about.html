@@ -1,11 +1,15 @@
 <html>
+
 	<head>
 		<title>Pizzeria</title>
 		<link rel="stylesheet" type="text/css" href="main.css"/>
+		
+		
 	</head>
 	<body>
 		<div id = "main">
 			<div id="header">THE BIG OLE PIZZA COMPANY</div>
+
 			<ul id="navmenu">
 				<li>
 					<a href="home.html">Home</a>
@@ -20,8 +24,23 @@
 					<a href="contact.html">Contact</a>
 				</li>
 			</ul>
-			
+	  <div id="pagecontent">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+    $("button").click(function(){
+        var text = $("h2");  
+        text.animate({right: '100px'}, 1000);
+        text.animate({fontSize: '2em'}, 1000);
+    });
+});
+</script> 
+<button>Start Animation</button><br>
+<h2> Some info about the origin </h2>
 </div>
+			
+
+
 </div>
 </body>
 </html>
