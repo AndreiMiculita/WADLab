@@ -1,0 +1,121 @@
+/* * { */
+	/* opacity: 0.8; */
+	/* outline: 1px solid rgba(100, 100, 100, 0.8); */
+/* } */
+
+body {
+	margin: 0px;
+	background-color: rgb(255, 255, 180);
+	font-family: sans-serif;	
+}
+
+#main {
+	position: relative;
+	padding: 10px;
+	background-color: red;
+	margin: 0px 200px;
+	height: 100%;
+}
+
+#header {
+	color: white;
+	font-family: Impact, sans-serif;
+	font-size: 40px;
+	text-align: center;
+	line-height: 5;
+	text-shadow: 0px 0px 6px black, 0px 0px 6px black, 0px 0px 6px black;
+	position: relative;
+	overflow: hidden;
+	height: 200px;
+	//background-image: url("pizza-1.jpg");
+	background-position:center;
+	background-size: cover;
+	box-shadow: 0px 4px 4px rgba(0,0,0,0.5);
+}
+
+#navmenu {
+	background-color: rgb(255, 255, 180);
+	clear: right;
+	list-style-type: none;
+	padding: 0px;
+	font-family: sans-serif;
+}
+
+#navmenu a{
+	color: black;
+	text-decoration: none;
+	background-color: rgb(255, 255, 180);
+	float: left;;
+	padding: 5px;
+	transition: box-shadow .2s;
+	box-shadow: 4px 4px 4px rgba(0,0,0,0.5);
+}
+
+#navmenu > li:last-child > a{
+	border-radius: 0px 4px 4px 0px; 
+}
+
+#navmenu a:hover{
+	box-shadow: inset 0px -2px 2px 0px rgba(0,0,0,0.8), inset 0px 2px 2px 0px rgba(255,255,255,1);
+}
+
+#navmenu a:active{
+	box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.5), inset 0px -2px 2px 0px rgba(255,255,255,1);
+}
+
+#pagecontent {
+	margin-top: 40px;
+	color: black;
+	background-color: rgb(255, 255, 180);
+	clear: left;
+	float: right;
+	width: 300px;
+	padding: 20px;
+	border-radius: 4px 0px 0px 4px;
+	box-shadow: -4px 4px 4px rgba(0,0,0,0.5);
+}
+
+#foodmenu {
+	background-color: rgb(255, 255, 180);
+	clear: left;
+	margin-left: 20px;
+	margin-top: 80px;
+	border-radius: 4px;
+	box-shadow: 1px 1px 4px rgba(0,0,0,1);
+}
+
+.foodname {
+	font-weight: bold;
+}
+
+.addtoorder{
+	border: 0;
+	color: white;
+	text-decoration: none;
+	background-color: red;
+	padding: 5px;
+	border-radius: 4px;
+	transition: box-shadow 5s;
+	box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.5);
+}
+
+.addtoorder:active{
+	outline: 0;
+	box-shadow: inset 2px 2px 3px 0px rgba(0,0,0,0.5);	
+}
+
+.addtoorder:focus{
+	outline: 0;
+	box-shadow: inset 2px 2px 3px 0px rgba(0,0,0,0.5);	
+}
+
+#footer {
+	position:relative;
+	margin-top: 40px;
+	background-color: rgb(255, 255, 180);
+	padding: 20px;
+	clear: both;
+	width: 300px;
+	border-radius: 0px 4px 4px 0px;
+	box-shadow: 4px 4px 4px rgba(0,0,0,0.5);
+}
