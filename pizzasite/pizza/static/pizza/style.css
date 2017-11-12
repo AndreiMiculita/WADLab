@@ -27,7 +27,7 @@ body {
 	position: relative;
 	overflow: hidden;
 	height: 200px;
-	//background-image: url("pizza-1.jpg");
+	background-image: url("pizza-1.jpg");
 	background-position:center;
 	background-size: cover;
 	box-shadow: 0px 4px 4px rgba(0,0,0,0.5);
