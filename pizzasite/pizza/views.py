@@ -5,9 +5,21 @@ from django.shortcuts import render
 
 
 def index(request):
+    return render(request, 'pizza/index.html')
+
+
+def contact(request):
+    return render(request, 'pizza/contact.html')
+
+
+def about(request):
+    return render(request, 'pizza/about.html')
+
+
+def menu(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
-    return render(request, 'pizza/index.html', context)
+    return render(request, 'pizza/menu.html', context)
 
 
 def detail(request, question_id):

@@ -4,6 +4,9 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^contact/$', views.contact, name='contact'),
+    url(r'^about/$', views.about, name='about'),
+    url(r'^menu/$', views.menu, name='menu'),
     # ex: /polls/5/
     url(r'^(?P<question_id>[0-9]+)/$', views.detail, name='detail'),
     # ex: /polls/5/results/

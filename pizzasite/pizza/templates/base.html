@@ -7,19 +7,19 @@
 </head>
 <body>
 <div id = "main">
-    <div id="header">THE BIG OLE PIZZA COMPANY</div>
+    <div id="header">THE BIG 4 PIZZA COMPANY</div>
     <ul id="navmenu">
         <li>
-            <a href="home.html">Home</a>
+            <a href="{% url 'index' %}">Home</a>
         </li>
         <li>
-            <a href="about.html">About Us</a>
+            <a href="{% url 'about' %}">About Us</a>
         </li>
         <li>
-            <a href="menu.html">Menu</a>
+            <a href="{% url 'menu' %}">Menu</a>
         </li>
         <li>
-            <a href="contact.html">Contact</a>
+            <a href="{% url 'contact' %}">Contact</a>
         </li>
     </ul>
     {% block content %}

@@ -5,14 +5,14 @@
 
 body {
 	margin: 0px;
-	background-color: rgb(255, 255, 180);
+	background-color: rgb(250, 255, 213);
 	font-family: sans-serif;	
 }
 
 #main {
 	position: relative;
 	padding: 10px;
-	background-color: red;
+	background-color: #ffc1b2;
 	margin: 0px 200px;
 	height: 100%;
 }
