@@ -4,17 +4,19 @@
     <div id= "pagecontent">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
     </div>
-    {% if latest_question_list %}
-        <table id="foodmenu">
-            {% for question in latest_question_list %}
+    <table id="foodmenu">
+        {% if latest_product_list %}
+            {% for product in latest_product_list %}
                 <tr>
-                    <td><a href="{% url 'menu' %}{{ question.link_str }}/">{{ question.question_text }}</a></td>
-                    <td>{{ question.question_desc }}</td>
+                    <td><a href="{% url 'menu' %}{{ product.link_str }}/">{{ product.question_text }}</a></td>
+                    <td>{{ product.question_desc }}</td>
                     <td><button>add to order</button></td>
                 </tr>
             {% endfor %}
-        </table>
-    {% else %}
-        <p>No pizzas are available.</p>
-    {% endif %}
+        {% else %}
+            <tr>
+                <td>No products are available.</td>
+            <tr>
+        {% endif %}
+    </table>
 {% endblock %}
