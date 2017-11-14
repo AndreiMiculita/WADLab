@@ -8,8 +8,9 @@
         <table id="foodmenu">
             {% for question in latest_question_list %}
                 <tr>
-                    <td><a href="{% url 'menu' %}{{ question.get_link_str }}/">{{ question.question_text }}</a></td>
+                    <td><a href="{% url 'menu' %}{{ question.link_str }}/">{{ question.question_text }}</a></td>
                     <td>{{ question.question_desc }}</td>
+                    <td><button>add to order</button></td>
                 </tr>
             {% endfor %}
         </table>

@@ -118,3 +118,12 @@ body {
 	border-radius: 0 4px 4px 0;
 	box-shadow: 4px 4px 4px rgba(0,0,0,0.5);
 }
+
+.pizza_heading {
+	clear: both;
+	padding-top: 40px;
+}
+
+.pizza_desc {
+	background: rgb(200, 200, 200);
+}

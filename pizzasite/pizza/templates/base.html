@@ -23,18 +23,6 @@
         </li>
     </ul>
     {% block content %}
-        <div id= "pagecontent">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-        {% if latest_question_list %}
-            <table id="foodmenu">
-                {% for question in latest_question_list %}
-                    <tr><td><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></td></tr>
-                {% endfor %}
-            </table>
-        {% else %}
-            <p>No pizzas are available.</p>
-        {% endif %}
     {% endblock %}
     <div id="footer">
         Footer text goes here.

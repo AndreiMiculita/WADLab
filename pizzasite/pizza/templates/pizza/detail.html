@@ -1,8 +1,12 @@
-<h1>{{ question.question_text }}</h1>
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="pizza_heading">{{ question.question_text }}</h1>
+<div class="pizza_desc">{{ question.question_desc }}</div>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-<form action="{% url 'polls:vote' question.id %}" method="post">
+{% comment %}
+<form action="{% url 'vote' question.id %}" method="post">
 {% csrf_token %}
 {% for choice in question.choice_set.all %}
     <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
@@ -13,11 +17,12 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'pizza:vote' question.id %}" method="post">
+<form action="{% url 'vote' question.id %}" method="post">
 {% csrf_token %}
 {% for choice in question.choice_set.all %}
     <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
     <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
 {% endfor %}
 <input type="submit" value="Vote" />
-</form>
+</form>{% endcomment %}
+{% endblock %}
