@@ -8,8 +8,8 @@
         {% if latest_product_list %}
             {% for product in latest_product_list %}
                 <tr>
-                    <td><a href="{% url 'menu' %}{{ product.link_str }}/">{{ product.question_text }}</a></td>
-                    <td>{{ product.question_desc }}</td>
+                    <td><a href="{% url 'menu' %}{{ product.link_str }}/">{{ product.product_name }}</a></td>
+                    <td>{{ product.product_desc }}</td>
                     <td><button>add to order</button></td>
                 </tr>
             {% endfor %}
