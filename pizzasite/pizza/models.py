@@ -39,4 +39,4 @@ class Choice(models.Model):
     amount = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.variety.__str__() + self.amount.__str__()
+        return f"{self.product.__str__()}{self.amount.__str__()}"
