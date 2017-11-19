@@ -2,17 +2,25 @@
 	/* opacity: 0.8; */
 	/* outline: 1px solid rgba(100, 100, 100, 0.8); */
 /* } */
+:root {
+	--primary-color: rgb(250, 255, 213);
+	--secondary-color: #ffc1b2;
+	--text-color: black;
+    --header-text-color: white;
+    --button-color: red;
+    --button-text-color: white;
+}
 
 body {
 	margin: 0;
-	background-color: rgb(250, 255, 213);
+	background-color: var(--primary-color);
 	font-family: sans-serif;
 }
 
 #main {
 	position: relative;
 	padding: 10px;
-	background-color: #ffc1b2;
+	background-color: var(--secondary-color);
 	margin: 0 10%;
 	height: 100%;
 }
@@ -33,7 +41,7 @@ body {
 }
 
 #navmenu {
-	background-color: rgb(255, 255, 180);
+	background-color: var(--primary-color);
 	clear: right;
 	list-style-type: none;
 	padding: 0;
@@ -41,9 +49,9 @@ body {
 }
 
 #navmenu a{
-	color: black;
+	color: var(--text-color);
 	text-decoration: none;
-	background-color: rgb(255, 255, 180);
+	background-color: var(--primary-color);
 	float: left;;
 	padding: 5px;
 	transition: box-shadow .2s;
@@ -63,19 +71,14 @@ body {
 }
 
 #pagecontent {
-	margin-top: 40px;
-	color: black;
-	background-color: rgb(255, 255, 180);
-	clear: left;
-	float: right;
-	width: 400px;
-	padding: 20px;
-	border-radius: 4px 0 0 4px;
-	box-shadow: -4px 4px 4px rgba(0,0,0,0.5);
+	clear: both;
+	background: var(--primary-color);
+    margin: 70px 40px 70px 40px;
+    padding: 20px;
 }
 
 #foodmenu {
-	background-color: rgb(255, 255, 180);
+	background-color: var(--primary-color);
 	clear: left;
 	margin-left: 20px;
 	margin-top: 80px;
@@ -85,9 +88,9 @@ body {
 
 .addtoorder{
 	border: 0;
-	color: white;
+	color: var(--button-text-color);
 	text-decoration: none;
-	background-color: red;
+	background-color: var(--button-color);
 	padding: 5px;
 	border-radius: 4px;
 	transition: box-shadow 5s;
@@ -106,8 +109,9 @@ body {
 
 #footer {
 	position:relative;
-	margin-top: 40px;
-	background-color: rgb(255, 255, 180);
+	margin-top: 70px;
+    bottom:0px;
+	background-color: var(--primary-color);
 	padding: 20px;
 	clear: both;
 	width: 300px;
@@ -121,5 +125,5 @@ body {
 }
 
 .pizza_desc {
-	background: rgb(200, 200, 200);
+	background: var(--primary-color);
 }

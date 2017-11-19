@@ -29,7 +29,7 @@ def detail(request, linkstr):
 
 
 def addchoice(request, linkstr):
-    choice = Choice(product=Product.objects.get(pk=1 ), amount=1, order=Order.objects.get(pk=1))
+    choice = Choice(product=get_object_or_404(Product, link_str=linkstr), amount=1, order=Order.objects.get(pk=1))
     choice.save()
     try:
         order = Order.objects.get(pk=1)
