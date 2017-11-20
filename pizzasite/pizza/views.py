@@ -36,7 +36,7 @@ def addchoice(request, linkstr):
     except (KeyError, Order.DoesNotExist):
         return render(request, 'pizza/detail.html', {
             'product': choice.product,
-            'error_message': "whoops",
+            'error_message': "No order exists",
         })
     else:
         order.choice_set.add(choice)
@@ -44,4 +44,4 @@ def addchoice(request, linkstr):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return HttpResponseRedirect(reverse('menu'))
+        return HttpResponseRedirect(reverse('pizza:menu'))

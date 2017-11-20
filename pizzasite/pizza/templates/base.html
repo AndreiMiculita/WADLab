@@ -10,16 +10,16 @@
     <div id="header">THE BIG 4 PIZZA COMPANY</div>
     <ul id="navmenu">
         <li>
-            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'pizza:index' %}">Home</a>
         </li>
         <li>
-            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'pizza:about' %}">About Us</a>
         </li>
         <li>
-            <a href="{% url 'menu' %}">Menu</a>
+            <a href="{% url 'pizza:menu' %}">Menu</a>
         </li>
         <li>
-            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'pizza:contact' %}">Contact</a>
         </li>
     </ul>
     {% block content %}

@@ -7,7 +7,7 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'addchoice' product.link_str %}" method="post">
+<form action="{% url 'pizza:addchoice' product.link_str %}" method="post">
 {% csrf_token %}
 <input class="addtoorder" type="submit" value="Add to order" />
 </form>
