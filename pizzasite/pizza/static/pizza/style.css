@@ -1,129 +1,202 @@
 /* * { */
-	/* opacity: 0.8; */
-	/* outline: 1px solid rgba(100, 100, 100, 0.8); */
+/* opacity: 0.8; */
+/* outline: 1px solid rgba(100, 100, 100, 0.8); */
 /* } */
 :root {
-	--primary-color: rgb(250, 255, 213);
-	--secondary-color: #ffc1b2;
-	--text-color: black;
+    --primary-color: rgb(245, 245, 245);
+    --secondary-color: rgb(240, 100, 80);
+    --text-color: black;
     --header-text-color: white;
-    --button-color: red;
+    --button-color: #ff8ca3;
+    --button-color2: hsl(351, 100%, 57%);
     --button-text-color: white;
+    --main-lateral-margin: 10%;
+    --main-width: calc(100% - 2 * var(--main-lateral-margin));
+    --main-top: 200px;
 }
 
 body {
-	margin: 0;
-	background-color: var(--primary-color);
-	font-family: sans-serif;
+    margin: 0;
+    background-color: var(--primary-color);
+    font-family: sans-serif;
 }
 
 #main {
-	position: relative;
-	padding: 10px;
-	background-color: var(--secondary-color);
-	margin: 0 10%;
-	height: 100%;
+    position: absolute;
+    background-color: var(--secondary-color);
+    margin: 0 var(--main-lateral-margin);
+    width: var(--main-width);
+    top: var(--main-top);
+    min-height: calc(100% - var(--main-top));
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
 }
 
 #header {
-	color: white;
-	font-family: Impact, sans-serif;
-	font-size: 40px;
-	text-align: center;
-	line-height: 5;
-	text-shadow: 0 0 6px black, 0 0 6px black, 0 0 6px black;
-	position: relative;
-	overflow: hidden;
-	height: 200px;
+    position: absolute;
+    height: 50%;
+    width: 100%;
     background: url("pizza-1.jpg") center;
     background-size: cover;
-	box-shadow: 0 4px 4px rgba(0,0,0,0.5);
+    box-shadow: -10px 0px black, 10px 0px black; /* otherwise there's' some white space there*/
+}
+
+#headertext {
+    color: white;
+    font-family: Impact, sans-serif;
+    font-size: 60px;
+    text-align: center;
+    line-height: calc(var(--main-top));
+    text-shadow: 0 0 6px black, 0 0 6px black, 0 0 6px black;
+}
+
+#thefour {
+    display: inline-block;
+    transform: scale(1.5, 1.5) rotate(10deg);
 }
 
 #navmenu {
-	background-color: var(--primary-color);
-	clear: right;
-	list-style-type: none;
-	padding: 0;
-	font-family: sans-serif;
+    z-index: 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    height: 50px;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0 solid transparent;
+    border-bottom-width: 2px;
+    background-color: var(--primary-color);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
 }
 
-#navmenu a{
-	color: var(--text-color);
-	text-decoration: none;
-	background-color: var(--primary-color);
-	float: left;;
-	padding: 5px;
-	transition: box-shadow .2s;
-	box-shadow: 4px 4px 4px rgba(0,0,0,0.5);
+#navmenu li {
+    height: 100%;
+    float: left;
 }
 
-#navmenu > li:last-child > a{
-	border-radius: 0 4px 4px 0;
+#navmenu a {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    float: left;
+    height: 100%;
+    transition: filter .2s;
+    line-height: 50px;
+    padding: 0 10px;
+    border: 1px solid grey;
+    border-image: linear-gradient(to bottom, transparent, gray, transparent) 1 100%;
+    border-left-width: 0;
 }
 
-#navmenu a:hover{
-	box-shadow: inset 0 -2px 2px 0 rgba(0,0,0,0.8), inset 0 2px 2px 0 rgba(255,255,255,1);
+#navmenu a:hover {
+    filter: brightness(110%);
 }
 
-#navmenu a:active{
-	box-shadow: inset 0 2px 2px 0 rgba(0,0,0,0.5), inset 0 -2px 2px 0 rgba(255,255,255,1);
+#navmenu a:active {
+    filter: brightness(90%);
+}
+
+#user_area {
+    position: x absolute;
+    top: 0;
+    right: 0;
+    list-style-type: none;
+    width: 170px;
+    font-family: sans-serif;
+    background: var(--primary-color);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+#user_area * {
+    margin: 10px 5px;
 }
 
 #pagecontent {
-	clear: both;
-	background: var(--primary-color);
+    clear: both;
+    background: var(--primary-color);
     margin: 70px 40px 70px 40px;
     padding: 20px;
+    border-radius: 4px;
 }
 
 #foodmenu {
-	background-color: var(--primary-color);
-	clear: left;
-	margin-left: 20px;
-	margin-top: 80px;
-	border-radius: 4px;
-	box-shadow: 1px 1px 4px rgba(0,0,0,1);
+    clear: both;
+    background: var(--primary-color);
+    margin: 70px 40px 70px 40px;
+    padding: 20px;
+    border-radius: 4px;
 }
 
-.addtoorder{
-	border: 0;
-	color: var(--button-text-color);
-	text-decoration: none;
-	background-color: var(--button-color);
-	padding: 5px;
-	border-radius: 4px;
-	transition: box-shadow 5s;
-	box-shadow: 2px 2px 3px 0 rgba(0,0,0,0.5);
+.pricelabel {
+    background: hotpink;
+    padding: 4px;
 }
 
-.addtoorder:active{
-	outline: 0;
-	box-shadow: inset 2px 2px 3px 0 rgba(0,0,0,0.5);
+.addtoorder {
+    border: 0;
+    color: var(--button-text-color);
+    text-decoration: none;
+    background: linear-gradient(var(--button-color), var(--button-color2));
+    padding: 5px;
+    border-radius: 4px;
 }
 
-.addtoorder:focus{
-	outline: 0;
-	box-shadow: inset 2px 2px 3px 0 rgba(0,0,0,0.5);
+.addtoorder:hover {
+    filter: brightness(110%);
+}
+
+.addtoorder:active {
+    outline: 0;
+    filter: brightness(90%);
 }
 
 #footer {
-	position:relative;
-	margin-top: 70px;
-    bottom:0px;
-	background-color: var(--primary-color);
-	padding: 20px;
-	clear: both;
-	width: 300px;
-	border-radius: 0 4px 4px 0;
-	box-shadow: 4px 4px 4px rgba(0,0,0,0.5);
+    position: absolute;
+    bottom: 0;
+    background-color: var(--primary-color);
+    padding: 20px;
+    clear: both;
+    width: calc(100% - 40px);
 }
 
 .pizza_heading {
-	clear: both;
-	padding-top: 40px;
+    clear: both;
+    padding-top: 40px;
 }
 
 .pizza_desc {
-	background: var(--primary-color);
+    background: var(--primary-color);
+}
+
+@media screen and (min-width: 40em) {
+    @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
+        .parallax {
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-perspective: 1px;
+            perspective: 1px;
+        }
+
+        .parallax__layer {
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+
+        .parallax__layer--base {
+            margin-top: -50%;
+            transform: translateZ(0px);
+        }
+
+        .parallax__layer--back {
+            //margin-left: -20px; /*this line is a hack*/
+            transform: translateZ(-1px) scale(2);
+        }
+
+        #headercontainer {
+            height: 100%;
+        }
+    }
 }
