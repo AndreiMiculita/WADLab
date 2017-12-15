@@ -7,8 +7,7 @@ from django.template.defaultfilters import slugify
 class Product(models.Model):
     product_name = models.CharField(max_length=200)
     product_desc = models.CharField(max_length=200)
-    price_small = models.IntegerField(default=0)
-    price_big = models.IntegerField(default=0)
+    price = models.IntegerField(default=0)
     link_str = models.SlugField(max_length=200, blank=True)
     pub_date = models.DateTimeField('date published')
 

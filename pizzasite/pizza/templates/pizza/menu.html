@@ -8,7 +8,17 @@
                 <tr>
                     <td><a href="{% url 'pizza:menu' %}{{ product.link_str }}/">{{ product.product_name }}</a></td>
                     <td>{{ product.product_desc }}</td>
-                    <td><button>add to order</button></td>
+                    <td>
+                        <div class="pricelabel">
+                                ${{ product.price }} <br>
+                        </div>
+                    </td>
+                    <td>
+                        <form action="{% url 'pizza:addchoice' product.link_str %}" method="post">
+                            {% csrf_token %}
+                            <input class="addtoorder" type="submit" value="Add to order" />
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         {% else %}
