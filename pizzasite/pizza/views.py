@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -18,7 +19,7 @@ def about(request):
 
 
 def menu(request):
-    latest_product_list = Product.objects.order_by('-pub_date')[:5]
+    latest_product_list = Product.objects.order_by('-pub_date')
     context = {'latest_product_list': latest_product_list}
     return render(request, 'pizza/menu.html', context)
 
@@ -26,6 +27,17 @@ def menu(request):
 def detail(request, linkstr):
     product = get_object_or_404(Product, link_str=linkstr)
     return render(request, 'pizza/detail.html', {'product': product})
+
+
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return HttpResponseRedirect(reverse('pizza:menu'))
+    else:
+        return HttpResponseRedirect(reverse('pizza:contact'))
 
 
 def addchoice(request, linkstr):
