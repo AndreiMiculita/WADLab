@@ -2,30 +2,33 @@
 <html lang="en">
 <head>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'pizza/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'pizza/style.css' %}"/>
     <title>{% block title %}Pizza Site{% endblock %}</title>
 </head>
 <body>
-<div id = "main">
-    <div id="header">THE BIG 4 PIZZA COMPANY</div>
-    <ul id="navmenu">
-        <li>
-            <a href="{% url 'pizza:index' %}">Home</a>
-        </li>
-        <li>
-            <a href="{% url 'pizza:about' %}">About Us</a>
-        </li>
-        <li>
-            <a href="{% url 'pizza:menu' %}">Menu</a>
-        </li>
-        <li>
-            <a href="{% url 'pizza:contact' %}">Contact</a>
-        </li>
-    </ul>
-    {% block content %}
-    {% endblock %}
-    <div id="footer">
-        Footer text goes here.
+<div class="parallax">
+    <div id="headercontainer" class="parallax__layer parallax__layer--back">
+        <div id="header"><div id="headertext">THE BIG <div id="thefour">4</div> PIZZA COMPANY</div></div>
+    </div><div id="main" class="parallax__layer parallax__layer--base">
+        <ul id="navmenu">
+            <li>
+                <a href="{% url 'pizza:index' %}">Home</a>
+            </li>
+            <li>
+                <a href="{% url 'pizza:about' %}">About Us</a>
+            </li>
+            <li>
+                <a href="{% url 'pizza:menu' %}">Menu</a>
+            </li>
+            <li>
+                <a href="{% url 'pizza:contact' %}">Contact</a>
+            </li>
+        </ul>
+        {% block content %}
+        {% endblock %}
+        <div id="footer">
+            Yes this is a footer.
+        </div>
     </div>
 </div>
 </body>

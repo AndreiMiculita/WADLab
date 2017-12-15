@@ -2,7 +2,9 @@
 {% block title %}Big 4 Pizza{% endblock %}
 {% block content %}
     <div id= "pagecontent">
-    Welcome to the Big 4 Pizza Company.<br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+        Welcome to the Big 4 Pizza Company.<br>
+        We sell pizza. Go to the <a href="{% url 'pizza:menu' %}">menu</a> to see our choices, and place an order,
+        either through a phone call at <a href="tel:555-555-5555">555-555-5555</a>, or through our website (you'll need
+        to go through a short sign up).
     </div>
 {% endblock %}
