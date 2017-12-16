@@ -40,7 +40,8 @@ def login(request):
         return HttpResponseRedirect(reverse('pizza:contact'))
 
 
-def addchoice(request, linkstr):
+def addchoice(request):
+    linkstr = request.POST['linkstr']
     choice = Choice(product=get_object_or_404(Product, link_str=linkstr), amount=1, order=Order.objects.get(pk=1))
     choice.save()
     try:

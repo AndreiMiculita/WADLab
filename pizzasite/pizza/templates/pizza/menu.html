@@ -10,13 +10,15 @@
                     <td>{{ product.product_desc }}</td>
                     <td>
                         <div class="pricelabel">
-                                ${{ product.price }} <br>
+                            ${{ product.price }} <br>
                         </div>
                     </td>
                     <td>
-                        <form action="{% url 'pizza:addchoice' product.link_str %}" method="post">
+                        <form method="post" action="{% url 'pizza:addchoice' %}">
                             {% csrf_token %}
+                            <input type="hidden" name="linkstr" value="{{ product.link_str }}"/>
                             <input class="addtoorder" type="submit" value="Add to order" />
+                            <input type="hidden" name="next" value="{{ next }}" />
                         </form>
                     </td>
                 </tr>

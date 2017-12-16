@@ -9,21 +9,29 @@
 <div class="parallax">
     <div id="headercontainer" class="parallax__layer parallax__layer--back">
         <div id="header"><div id="headertext">THE BIG <div id="thefour">4</div> PIZZA COMPANY</div></div>
-    </div><div id="main" class="parallax__layer parallax__layer--base">
-        <ul id="navmenu">
-            <li>
-                <a href="{% url 'pizza:index' %}">Home</a>
-            </li>
-            <li>
-                <a href="{% url 'pizza:about' %}">About Us</a>
-            </li>
-            <li>
-                <a href="{% url 'pizza:menu' %}">Menu</a>
-            </li>
-            <li>
-                <a href="{% url 'pizza:contact' %}">Contact</a>
-            </li>
-        </ul>
+    </div>
+    <div id="main" class="parallax__layer parallax__layer--base">
+        <div id="navbar">
+            <ul id="navmenu">
+                <li>
+                    <a href="{% url 'pizza:index' %}">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'pizza:about' %}">About Us</a>
+                </li>
+                <li>
+                    <a href="{% url 'pizza:menu' %}">Menu</a>
+                </li>
+                <li>
+                    <a href="{% url 'pizza:contact' %}">Contact</a>
+                </li>
+            </ul>
+            <ul id="usermenu">
+                <li>
+                    <a href="{% url 'pizza:login' %}">Login</a>
+                </li>
+            </ul>
+        </div>
         {% block content %}
         {% endblock %}
         <div id="footer">

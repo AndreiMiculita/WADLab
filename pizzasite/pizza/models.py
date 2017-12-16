@@ -28,14 +28,28 @@ class Order(models.Model):
     address = models.CharField(max_length=200)
     customer_comment = models.CharField(max_length=500)
     time_placed = models.DateTimeField('date order was placed')
-    sent = models.BooleanField
     products = models.ManyToManyField(Product, through="Choice")
+    ORDERED = 'OR'
+    PREPARING = 'PR'
+    SENT = 'SN'
+    RECEIVED = 'RC'
+    STATE_CHOICES = (
+        (ORDERED, 'Ordered'),
+        (PREPARING, 'Preparing'),
+        (SENT, 'Sent'),
+        (RECEIVED, 'Received'),
+    )
+    state = models.CharField(
+        max_length=2,
+        choices=STATE_CHOICES,
+        default=ORDERED,
+    )
+
+    def __str__(self):
+        return self.state
 
 
 class Choice(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     amount = models.IntegerField(default=0)
-
-    def __str__(self):
-        return f"{self.product.__str__()}{self.amount.__str__()}"

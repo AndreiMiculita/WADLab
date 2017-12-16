@@ -54,12 +54,11 @@ body {
     transform: scale(1.5, 1.5) rotate(10deg);
 }
 
-#navmenu {
+#navbar{
     z-index: 0;
     position: sticky;
     top: 0;
     width: 100%;
-    list-style-type: none;
     height: 50px;
     font-family: sans-serif;
     margin: 0;
@@ -68,6 +67,13 @@ body {
     border-bottom-width: 2px;
     background-color: var(--primary-color);
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+
+}
+
+#navmenu {
+    margin: 0px;
+    list-style-type: none;
+    padding-left: 0;
 }
 
 #navmenu li {
@@ -97,12 +103,39 @@ body {
     filter: brightness(90%);
 }
 
-#user_area {
-    position: x absolute;
-    top: 0;
-    right: 0;
+#usermenu {
+    margin: 0;
     list-style-type: none;
-    width: 170px;
+}
+#navmenu li {
+    height: 100%;
+    float: left;
+}
+
+#usermenu a {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    float: right;
+    height: 100%;
+    transition: filter .2s;
+    line-height: 50px;
+    padding: 0 10px;
+    border: 1px solid grey;
+    border-image: linear-gradient(to bottom, transparent, gray, transparent) 1 100%;
+    border-right-width: 0;
+}
+
+#usermenu a:hover {
+    filter: brightness(110%);
+}
+
+#usermenu a:active {
+    filter: brightness(90%);
+}
+
+#user_area {
+    list-style-type: none;
     font-family: sans-serif;
     background: var(--primary-color);
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
