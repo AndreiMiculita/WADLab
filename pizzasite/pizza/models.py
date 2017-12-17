@@ -1,4 +1,6 @@
 import datetime
+
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 from django.template.defaultfilters import slugify
@@ -25,10 +27,12 @@ class Product(models.Model):
 
 
 class Order(models.Model):
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, default=1)
     address = models.CharField(max_length=200)
     customer_comment = models.CharField(max_length=500)
     time_placed = models.DateTimeField('date order was placed')
-    products = models.ManyToManyField(Product, through="Choice")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, default=1)
+    amount = models.IntegerField(default=0)
     ORDERED = 'OR'
     PREPARING = 'PR'
     SENT = 'SN'
@@ -46,10 +50,5 @@ class Order(models.Model):
     )
 
     def __str__(self):
-        return self.state
+        return dict(self.STATE_CHOICES)[self.state] + "| Address: " + self.address + " " + self.customer_comment
 
-
-class Choice(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    amount = models.IntegerField(default=0)

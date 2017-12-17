@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Big 4 Pizza{% endblock %}
+{% block content %}
+    <div id= "pagecontent">
+        {% if user.is_authenticated %}
+            {% if order_list %}
+                {% for order in order_list %}
+                    {% if order.customer.username == user.username %}
+                        <tr>
+                            <td>{{ order.product.product_name }}</td>
+                            <td>{{ order.address }}</td>
+                            <td>{{ order.customer_comment }}</td>
+                            <td>{{ order.amount }}</td>
+                            <td>{{ order.state }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td>No order made.</td>
+                <tr>
+            {% endif %}
+        {% endif %}
+        <table id="foodmenu">
+        </table>
+    </div>
+{% endblock %}

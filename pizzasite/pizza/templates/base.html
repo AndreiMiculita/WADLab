@@ -27,9 +27,18 @@
                 </li>
             </ul>
             <ul id="usermenu">
-                <li>
-                    <a href="{% url 'pizza:login' %}">Login</a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'pizza:order' %}">Orders by {{ user.username }}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'pizza:logout' %}?next={% url 'pizza:index' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'pizza:login' %}">Login</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
         {% block content %}

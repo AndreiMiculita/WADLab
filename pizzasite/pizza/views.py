@@ -1,9 +1,11 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.utils import timezone
 
-from .models import Product, Choice, Order
+from .models import Product, Order
 
 
 def index(request):
@@ -40,21 +42,30 @@ def login(request):
         return HttpResponseRedirect(reverse('pizza:contact'))
 
 
-def addchoice(request):
-    linkstr = request.POST['linkstr']
-    choice = Choice(product=get_object_or_404(Product, link_str=linkstr), amount=1, order=Order.objects.get(pk=1))
-    choice.save()
+def logout(request):
+    logout(request)
+    return redirect('pizza:contact')
+
+
+def addorder(request, linkstr):
+    product = get_object_or_404(Product, link_str=linkstr)
     try:
-        order = Order.objects.get(pk=1)
+        neworder = Order(address='someaddress',  customer_comment='spicy', time_placed=timezone.now(), product=product,
+                      amount=1)
     except (KeyError, Order.DoesNotExist):
         return render(request, 'pizza/detail.html', {
-            'product': choice.product,
+            'product': product,
             'error_message': "No order exists",
         })
     else:
-        order.choice_set.add(choice)
-        order.save()
+        neworder.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('pizza:menu'))
+
+
+def order(request):
+    order_list = Order.objects.all()
+    context = {'order_list': order_list}
+    return render(request, 'pizza/order.html', context)
