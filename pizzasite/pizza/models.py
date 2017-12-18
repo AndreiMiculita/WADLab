@@ -33,11 +33,13 @@ class Order(models.Model):
     time_placed = models.DateTimeField('date order was placed')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, default=1)
     amount = models.IntegerField(default=0)
+    COMPOSING = 'CM'
     ORDERED = 'OR'
     PREPARING = 'PR'
     SENT = 'SN'
     RECEIVED = 'RC'
     STATE_CHOICES = (
+        (COMPOSING, 'Composing'),
         (ORDERED, 'Ordered'),
         (PREPARING, 'Preparing'),
         (SENT, 'Sent'),
@@ -46,9 +48,11 @@ class Order(models.Model):
     state = models.CharField(
         max_length=2,
         choices=STATE_CHOICES,
-        default=ORDERED,
+        default=COMPOSING,
     )
 
     def __str__(self):
         return dict(self.STATE_CHOICES)[self.state] + "| Address: " + self.address + " " + self.customer_comment
 
+    def printstate(self):
+        return dict(self.STATE_CHOICES)[self.state]

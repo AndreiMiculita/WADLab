@@ -2,14 +2,29 @@
 {% block title %}{{ product.product_name }}{% endblock %}
 
 {% block content %}
-<h1 class="pizza_heading">{{ product.product_name }}</h1>
-<div class="pizza_desc">{{ product.product_desc }}</div>
+    <div id="pagecontent">
+        <h1 class="pizza_heading">{{ product.product_name }}</h1>
+        <div class="pizza_desc">{{ product.product_desc }}</div>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'pizza:addorder' product.link_str %}" method="post">
-{% csrf_token %}
-<input class="addtoorder" type="submit" value="Add to order" />
-</form>
-
+        <form action="{% url 'pizza:addorder' product.link_str %}" method="post">
+            <td>Address:
+                {% csrf_token %}
+                <input class="addressinput" type="text" name="address" value=" "/>
+            </td>
+            <td>Comments
+                {% csrf_token %}
+                <input class="commentsinput" type="text" name="comments" value=" "/>
+            </td>
+            <td>Amount:
+                {% csrf_token %}
+                <input class="amountinput" type="number" name="amount" value="1"/>
+            </td>
+            <td>
+                <input type="hidden" name="pk" value={{ user.pk }}/>
+                <input class="addtoorder" type="submit" value="Add to order" />
+            </td>
+        </form>
+    </div>
 {% endblock %}

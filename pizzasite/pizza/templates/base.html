@@ -14,29 +14,35 @@
         <div id="navbar">
             <ul id="navmenu">
                 <li>
-                    <a href="{% url 'pizza:index' %}">Home</a>
+                    <a class="pagelink" href="{% url 'pizza:index' %}">Home</a>
                 </li>
                 <li>
-                    <a href="{% url 'pizza:about' %}">About Us</a>
+                    <a class="pagelink" href="{% url 'pizza:about' %}">About Us</a>
                 </li>
                 <li>
-                    <a href="{% url 'pizza:menu' %}">Menu</a>
+                    <a class="pagelink" href="{% url 'pizza:menu' %}">Menu</a>
                 </li>
                 <li>
-                    <a href="{% url 'pizza:contact' %}">Contact</a>
+                    <a class="pagelink" href="{% url 'pizza:contact' %}">Contact</a>
                 </li>
             </ul>
             <ul id="usermenu">
                 {% if user.is_authenticated %}
                     <li>
-                        <a href="{% url 'pizza:order' %}">Orders by {{ user.username }}</a>
+                        <a class="pagelink" href="{% url 'pizza:logout' %}?next={% url 'pizza:index' %}">Logout</a>
                     </li>
                     <li>
-                        <a href="{% url 'pizza:logout' %}?next={% url 'pizza:index' %}">Logout</a>
+                        <a class="pagelink" href="{% url 'pizza:orders' %}">Your orders</a>
+                    </li>
+                    <li>
+                        <div class="pagelink">{{ user.username }}</div>
                     </li>
                 {% else %}
                     <li>
                         <a href="{% url 'pizza:login' %}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'pizza:signup' %}">Sign Up</a>
                     </li>
                 {% endif %}
             </ul>

@@ -1,17 +1,35 @@
 {% extends "base.html" %}
 {% block title %}Big 4 Pizza{% endblock %}
+
 {% block content %}
-    <div id= "pagecontent">
+    <table id="foodmenu">
         {% if user.is_authenticated %}
             {% if order_list %}
+                <tr>
+                    <td>
+                    <td>Address
+                    <td>Comments
+                    <td>Amount
+                </tr>
                 {% for order in order_list %}
                     {% if order.customer.username == user.username %}
                         <tr>
-                            <td>{{ order.product.product_name }}</td>
+                            <td><a href="{% url 'pizza:menu' %}{{ order.product.link_str }}/">{{ order.product.product_name }}</a></td>
                             <td>{{ order.address }}</td>
                             <td>{{ order.customer_comment }}</td>
                             <td>{{ order.amount }}</td>
-                            <td>{{ order.state }}</td>
+                            <td>{{ order.printstate }}</td>
+                            <td>
+                                <form action="{% url 'pizza:orderplace' order.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input class="addtoorder" type="submit" value="Place" />
+                                </form>
+                            <td>
+                                <form action="{% url 'pizza:orderdelete' order.id %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="order_id" value="{{ order.id }}">
+                                    <input class="addtoorder" type="Submit" name="Delete" value="Delete"/>
+                                </form>
                         </tr>
                     {% endif %}
                 {% endfor %}
@@ -21,7 +39,5 @@
                 <tr>
             {% endif %}
         {% endif %}
-        <table id="foodmenu">
-        </table>
-    </div>
+    </table>
 {% endblock %}

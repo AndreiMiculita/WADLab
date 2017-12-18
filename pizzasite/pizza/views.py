@@ -1,9 +1,11 @@
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.utils import timezone
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Product, Order
 
@@ -49,9 +51,15 @@ def logout(request):
 
 def addorder(request, linkstr):
     product = get_object_or_404(Product, link_str=linkstr)
+
+    if request.user.is_authenticated():
+        user = request.user
+    amount = request.POST['amount']
+    address = request.POST['address']
+    comments = request.POST['comments']
     try:
-        neworder = Order(address='someaddress',  customer_comment='spicy', time_placed=timezone.now(), product=product,
-                      amount=1)
+        neworder = Order(address=address, customer_comment=comments, time_placed=timezone.now(), product=product,
+                         amount=amount, customer=user)
     except (KeyError, Order.DoesNotExist):
         return render(request, 'pizza/detail.html', {
             'product': product,
@@ -65,7 +73,36 @@ def addorder(request, linkstr):
         return HttpResponseRedirect(reverse('pizza:menu'))
 
 
-def order(request):
-    order_list = Order.objects.all()
+def orders(request):
+    if request.user.is_authenticated():
+        user = request.user
+    order_list = Order.objects.filter(customer_id=user.id)
     context = {'order_list': order_list}
     return render(request, 'pizza/order.html', context)
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request   )
+            return render(request, 'pizza/order.html')
+    else:
+        form = UserCreationForm()
+    return render(request, 'signup.html', {'form': form})
+
+
+def placeorder(request, order_id):
+    o = get_object_or_404(Order, id=order_id)
+    o.state = "OR"
+    o.save()
+    return HttpResponseRedirect(reverse('pizza:orders'))
+
+
+class OrderDelete(DeleteView):
+    model = Order
+    success_url = reverse_lazy('pizza:orders')

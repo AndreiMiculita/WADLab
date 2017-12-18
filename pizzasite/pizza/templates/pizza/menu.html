@@ -4,6 +4,14 @@
 {% block content %}
     <table id="foodmenu">
         {% if latest_product_list %}
+            <tr>
+                <td>
+                <td>
+                <td>
+                <td>Address
+                <td>Comments
+                <td>Amount
+            </tr>
             {% for product in latest_product_list %}
                 <tr>
                     <td><a href="{% url 'pizza:menu' %}{{ product.link_str }}/">{{ product.product_name }}</a></td>
@@ -13,12 +21,26 @@
                             ${{ product.price }} <br>
                         </div>
                     </td>
-                    <td>
+                    {% if user.is_authenticated %}
                         <form action="{% url 'pizza:addorder' product.link_str %}" method="post">
-                            {% csrf_token %}
-                            <input class="addtoorder" type="submit" value="Add to order" />
+                            <td>
+                                {% csrf_token %}
+                                <input class="addressinput" type="text" name="address" value=" "/>
+                            </td>
+                            <td>
+                                {% csrf_token %}
+                                <input class="commentsinput" type="text" name="comments" value=" "/>
+                            </td>
+                            <td>
+                                {% csrf_token %}
+                                <input class="amountinput" type="number" name="amount" value="1"/>
+                            </td>
+                            <td>
+                                <input type="hidden" name="pk" value={{ user.pk }}/>
+                                <input class="addtoorder" type="submit" value="Add to order" />
+                            </td>
                         </form>
-                    </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         {% else %}

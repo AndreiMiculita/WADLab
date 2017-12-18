@@ -81,7 +81,7 @@ body {
     float: left;
 }
 
-#navmenu a {
+.pagelink {
     background-color: var(--primary-color);
     color: var(--text-color);
     text-decoration: none;
@@ -95,11 +95,11 @@ body {
     border-left-width: 0;
 }
 
-#navmenu a:hover {
+.pagelink:hover {
     filter: brightness(110%);
 }
 
-#navmenu a:active {
+.pagelink:active {
     filter: brightness(90%);
 }
 
@@ -134,6 +134,13 @@ body {
     filter: brightness(90%);
 }
 
+div.pagelink{
+    float:right;
+    border: 1px solid grey;
+    border-image: linear-gradient(to bottom, transparent, gray, transparent) 1 100%;
+    border-right-width: 0;
+}
+
 #user_area {
     list-style-type: none;
     font-family: sans-serif;
@@ -161,8 +168,14 @@ body {
     border-radius: 4px;
 }
 
+#foodmenu td {
+    padding-left: 40px;
+}
+
 .pricelabel {
-    background: hotpink;
+    background: rgb(206, 83, 68);
+    color: white;
+    border-radius: 3px;
     padding: 4px;
 }
 
@@ -232,4 +245,8 @@ body {
             height: 100%;
         }
     }
+}
+
+.amountinput {
+    width: 40px;
 }
