@@ -7,11 +7,13 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .models import Product, Order
+from .models import Product, Order, Article
 
 
 def index(request):
-    return render(request, 'pizza/index.html')
+    article_list = Article.objects.all().order_by('-pub_date')[:3]
+    context = {'article_list': article_list}
+    return render(request, 'pizza/index.html', context)
 
 
 def contact(request):

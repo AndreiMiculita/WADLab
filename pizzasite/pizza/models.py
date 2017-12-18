@@ -25,6 +25,14 @@ class Product(models.Model):
 
         super(Product, self).save(*args, **kwargs)
 
+class Article(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.CharField(max_length=500)
+    pub_date = models.DateTimeField('date published')
+    def save(self, *args, **kwargs):
+        self.pub_date = timezone.now()
+
+        super(Article, self).save(*args, **kwargs)
 
 class Order(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, default=1)
@@ -56,3 +64,7 @@ class Order(models.Model):
 
     def printstate(self):
         return dict(self.STATE_CHOICES)[self.state]
+
+    def printprice(self):
+        price = self.amount * self.product.price
+        return price

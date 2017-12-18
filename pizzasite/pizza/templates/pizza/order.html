@@ -10,6 +10,8 @@
                     <td>Address
                     <td>Comments
                     <td>Amount
+                    <td>Total price
+                    <td>State
                 </tr>
                 {% for order in order_list %}
                     {% if order.customer.username == user.username %}
@@ -18,18 +20,21 @@
                             <td>{{ order.address }}</td>
                             <td>{{ order.customer_comment }}</td>
                             <td>{{ order.amount }}</td>
+                            <td>{{ order.printprice }}</td>
                             <td>{{ order.printstate }}</td>
-                            <td>
-                                <form action="{% url 'pizza:orderplace' order.id %}" method="post">
-                                    {% csrf_token %}
-                                    <input class="addtoorder" type="submit" value="Place" />
-                                </form>
-                            <td>
+                            {% if order.printstate != "Ordered" %}
+                                <td>
+                                    <form action="{% url 'pizza:orderplace' order.id %}" method="post">
+                                        {% csrf_token %}
+                                        <input class="addtoorder" type="submit" value="Place" />
+                                    </form>
+                                <td>
                                 <form action="{% url 'pizza:orderdelete' order.id %}">
                                     {% csrf_token %}
                                     <input type="hidden" name="order_id" value="{{ order.id }}">
                                     <input class="addtoorder" type="Submit" name="Delete" value="Delete"/>
                                 </form>
+                            {% endif %}
                         </tr>
                     {% endif %}
                 {% endfor %}

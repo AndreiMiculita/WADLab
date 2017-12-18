@@ -95,7 +95,7 @@ body {
     border-left-width: 0;
 }
 
-.pagelink:hover {
+.pagelink:not(div):hover { /*only on links*/
     filter: brightness(110%);
 }
 

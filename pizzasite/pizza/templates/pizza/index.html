@@ -5,6 +5,14 @@
         Welcome to the Big 4 Pizza Company.<br>
         We sell pizza. Go to the <a href="{% url 'pizza:menu' %}">menu</a> to see our choices, and place an order,
         either through a phone call at <a href="tel:555-555-5555">555-555-5555</a>, or through our website (you'll need
-        to go through a short sign up).
+        to go through a short <a href="{% url 'pizza:signup' %}">sign up</a>).
+        {% if article_list %}
+            {% for article in article_list %}
+                <div style="background:rgba(0,0,0,0.1); padding: 4px;">
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.content }}</p>
+                </div>
+            {% endfor %}
+        {%  endif %}
     </div>
 {% endblock %}
