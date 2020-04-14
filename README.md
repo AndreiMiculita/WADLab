@@ -10,7 +10,7 @@ Some features:
 
 Setup:
 
-    $ pip install requirements.txt
+    $ pip install -r requirements.txt
     $ python3 pizzasite/manage.py runserver 8000
     
 Then visit either:
